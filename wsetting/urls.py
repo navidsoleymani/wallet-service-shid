@@ -1,9 +1,16 @@
 from django.conf.urls import url
-
 from wsetting import views
 
 urlpatterns = [
-    url('transaction/set/minmax/', views.setMinimax, name='set-min-max'),
-    url('wallet/block/', views.block, name='wallet-block'),
-    url('wallet/unblock/', views.unblock, name='wallet-unblock'),
+    url(
+        regex=r'^transaction-limit$',
+        view=views.transaction_limit,
+        name='transaction-limit'
+    ),
+    url(
+        regex=r'^expiry-date$',
+        view=views.expiry_date,
+        name='expiry-date'
+    ),
+
 ]
