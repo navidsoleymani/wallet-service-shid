@@ -5,7 +5,6 @@ def translator(message: dict):
     return message['en-us']
 
 
-
 TRANSACTION_ALLOWED = translator(
     {
         "en-us": "The transaction was successful.",
