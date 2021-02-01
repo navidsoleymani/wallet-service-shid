@@ -106,7 +106,7 @@ def YourPocketListAPIView(request: HttpRequest):
 def YourPocketPocketNameListAPIView(request: HttpRequest):
     if 'pocket_name' not in request.GET.keys():
         raise Exception('pocket_name:  ' + MESSAGE.REQUIRED)
-    queryset = w_models.Wallet.objects.filter(
+    queryset = w_models.YourPocket.objects.filter(
         pocket_name__exact=request.GET.get('pocket_name'),
     ).filter(active__exact=True).all()
     page_number: int
@@ -161,7 +161,7 @@ def TransactionCreateAPIView(request: HttpRequest) -> [dict, str]:
 @ratelimit(key='ip', rate=RATE_LIMIT, block=True)
 @json_respose
 def TransactionListAPIView(request: HttpRequest):
-    queryset = w_models.Transaction.objects.get().all()
+    queryset = w_models.Transaction.objects.all()
     page_number: int
     if 'page' in request.GET.keys():
         page_number = int(request.GET.get('page'))
